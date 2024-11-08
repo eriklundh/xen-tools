@@ -543,7 +543,7 @@ sub deleteXenImage
         if ( -e "/dev/$CONFIG{'zpool'}/$hostname-swap" )
         {
             if ($CONFIG{ 'dry-run' }) {
-                print "Would remove ZFS swap volume /dev/$CONFIG{'zpool'}/$hostname-swap\n";
+                print "Would remove ZFS swap volume /dev/zvol/$CONFIG{'zpool'}/$hostname-swap\n";
             } else {
                 print "Removing swap volume\n";
                 runCommand("zfs destroy -R $CONFIG{'zpool'}/$hostname-swap", \%PER_HOST_CONFIG);
@@ -553,7 +553,7 @@ sub deleteXenImage
         if ( -e "/dev/$CONFIG{'zpool'}/$hostname-disk" )
         {
             if ($CONFIG{ 'dry-run' }) {
-                print "Would remove ZFS disk volume /dev/$CONFIG{'zpool'}/$hostname-disk\n";
+                print "Would remove ZFS disk volume /dev/zvol/$CONFIG{'zpool'}/$hostname-disk\n";
             } else {
                 print "Removing ZFS disk volume\n";
                 runCommand("zfs destroy -R $CONFIG{'zpool'}/$hostname-disk", \%PER_HOST_CONFIG);
